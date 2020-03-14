@@ -28,8 +28,8 @@ export const Dashboard = () => {
                 <AnimatedText text="find out your precision with keyboard." />
                 <br />
                 <motion.div initial="hidden" animate="visible" transition={{ delay: 0.8 }} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-                    <p>a skill-based game, that will test your accuracy & speed.</p>
-                    <p>enjoy a game of <b>randomly selected, user created texts</b>, or <b>create & share</b> your game to others.</p>
+                    <p>a skill-based typing game, that will test your accuracy & speed.</p>
+                    <p>enjoy a game of <b>randomly selected, user created texts</b>, or <b>create & share</b> your texts to others.</p>
                 </motion.div>
             </div>
 
