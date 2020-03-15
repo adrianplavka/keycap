@@ -6,7 +6,7 @@ import { AnimatedText } from "../components/AnimatedText";
 import { useInterval } from "../hooks/useInterval";
 import { getRandomArbitrary } from "../utils";
 
-export const Dashboard = () => {
+export const DashboardPage = () => {
     let [percentage, setPercentage] = useState(0);
     let [time, setTime] = useState(0);
 

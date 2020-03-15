@@ -1,5 +1,4 @@
 using System;
-using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -7,8 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Npgsql;
 
-using Keycap.DAL;
+using Keycap.Models.DAL;
 
 namespace Keycap
 {
@@ -33,35 +33,11 @@ namespace Keycap
             });
 
             services.AddDbContext<KeycapDbContext>(options =>
-            {
-                var isUrl = Uri.TryCreate(
-                    Environment.GetEnvironmentVariable("DATABASE_URL"),
-                    UriKind.Absolute,
-                    out var url);
-                if (!isUrl)
-                    throw new UriFormatException("Cannot deserialize DATABASE_URL");
-
-                var connectionString = new StringBuilder();
-                connectionString.Append($"host={url.Host};");
-
-                if (url.UserInfo.Contains(":"))
-                {
-                    connectionString.Append($"username={url.UserInfo.Split(":")[0]};");
-                    connectionString.Append($"password={url.UserInfo.Split(":")[1]};");
-                }
-                else
-                {
-                    connectionString.Append($"username={url.UserInfo};");
-                }
-
-                connectionString.Append($"database={url.LocalPath.Substring(1)};pooling=true;");
-
-                options.UseNpgsql(connectionString.ToString());
-            });
+                options.UseNpgsql(CreateDatabaseConnectionString()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -93,13 +69,35 @@ namespace Keycap
 
             // Initializes the application's database in order to re-create database tables.
             using (var scope =
-                app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                                       .CreateScope())
                     using (var context = scope.ServiceProvider.GetService<KeycapDbContext>())
                     {
-                        // TODO: Delete "EnsureDeleted" call, when done with prototyping.
                         context.Database.EnsureDeleted();
                         context.Database.EnsureCreated();
                     }
+        }
+
+        private static string CreateDatabaseConnectionString()
+        {
+            var isUri = Uri.TryCreate(
+                    Environment.GetEnvironmentVariable("DATABASE_URL"),
+                    UriKind.Absolute,
+                    out var uri);
+            if (!isUri)
+                throw new UriFormatException("Cannot deserialize DATABASE_URL environment variable.");
+
+            var builder = new NpgsqlConnectionStringBuilder
+            {
+                Host = uri.Host,
+                Port = uri.Port,
+                Username = uri.UserInfo.Contains(":", StringComparison.Ordinal) ? uri.UserInfo.Split(":")[0] : uri.UserInfo,
+                Password = uri.UserInfo.Contains(":", StringComparison.Ordinal) ? uri.UserInfo.Split(":")[1] : null,
+                Database = uri.LocalPath.TrimStart('/'),
+                Pooling = true,
+            };
+
+            return builder.ToString();
         }
     }
 }

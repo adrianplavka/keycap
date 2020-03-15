@@ -7,7 +7,8 @@ import "rsuite/dist/styles/rsuite-default.css";
 import "./App.css";
 import logo from "./assets/img/logo.png";
 
-import { Dashboard } from "./pages/Dashboard";
+import { DashboardPage } from "./pages/DashboardPage";
+import { CreatePage } from "./pages/CreatePage";
 
 const App = () => {
     return (
@@ -54,13 +55,13 @@ const App = () => {
                     <div id="main-content">
                         <Switch>
                             <Route exact path="/">
-                                <Dashboard />
+                                <DashboardPage />
                             </Route>
                             <Route path="/play">
                                 Play
                             </Route>
                             <Route exact path="/create">
-                                Create
+                                <CreatePage />
                             </Route>
                             <Route path="*">
                                 <Redirect to="/" />

@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Keycap",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:61623",
       "sslPort": 0
