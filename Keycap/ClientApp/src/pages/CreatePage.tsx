@@ -39,7 +39,7 @@ export const CreatePage: React.SFC = () => {
     const [refId, setRefId] = useState<string | null>(null);
 
     const handleSubmit = async () => {
-        if (formElement.current?.check()) {
+        if (formElement?.current?.check()) {
             setLoading(true);
 
             try {
