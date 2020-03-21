@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="ASP.NET Core entrypoint">
+    <Position X="2.375" Y="1.708" Height="0.333" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Database Access Layer">
+    <Position X="7.505" Y="9.666" Height="0.516" Width="1.562" />
+  </Comment>
+  <Comment CommentText="API">
+    <Position X="6.744" Y="1.034" Height="0.364" Width="0.942" />
+  </Comment>
+  <Class Name="Keycap.Program">
+    <Position X="2" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Keycap.Startup">
+    <Position X="2" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAACgAAACAAAAAA=</HashCode>
+      <FileName>Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Keycap.Controllers.GamesController">
+    <Position X="6" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABABABAAAABAAAAKAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Controllers\GamesController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Keycap.Models.DAL.KeycapDbContext">
+    <Position X="6" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Models\DAL\KeycapDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Keycap.Models.Game">
+    <Position X="5.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAEAAACEAAAAAAAAAAAAAAAAACAAAQAA=</HashCode>
+      <FileName>Models\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Keycap.Models.GameStatistic">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAQAAAAAAAAAAAAACEIQAAAAAgAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\GameStatistic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Keycap.DAO.GameAvgStatsResponse" Collapsed="true">
+    <Position X="8.75" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAIAABAAAAAAAAAAAAACIAAAAAAA=</HashCode>
+      <FileName>DAO\GameAvgStatsResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Keycap.DAO.GamePostRequest" Collapsed="true">
+    <Position X="8.75" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAEAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>DAO\GamePostRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Keycap.DAO.GameResponse" Collapsed="true">
+    <Position X="8.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAEAAACEAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>DAO\GameResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Keycap.DAO.GameStatsPostRequest" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAIQAAAAAgAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>DAO\GameStatsPostRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Keycap.Models.Label">
+    <Position X="5.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAA=</HashCode>
+      <FileName>Models\Game.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
