@@ -33,7 +33,7 @@ namespace Keycap
             });
 
             services.AddDbContext<KeycapDbContext>(options =>
-                options.UseNpgsql(CreateDatabaseConnectionString()));
+                options.UseNpgsql(CreateDatabaseConnectionString()), ServiceLifetime.Transient);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -91,8 +91,12 @@ namespace Keycap
             {
                 Host = uri.Host,
                 Port = uri.Port,
-                Username = uri.UserInfo.Contains(":", StringComparison.Ordinal) ? uri.UserInfo.Split(":")[0] : uri.UserInfo,
-                Password = uri.UserInfo.Contains(":", StringComparison.Ordinal) ? uri.UserInfo.Split(":")[1] : null,
+                Username = uri.UserInfo.Contains(":", StringComparison.Ordinal) 
+                    ? uri.UserInfo.Split(":")[0] 
+                    : uri.UserInfo,
+                Password = uri.UserInfo.Contains(":", StringComparison.Ordinal) 
+                    ? uri.UserInfo.Split(":")[1] 
+                    : null,
                 Database = uri.LocalPath.TrimStart('/'),
                 Pooling = true,
             };

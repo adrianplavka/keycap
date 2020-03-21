@@ -16,7 +16,7 @@ interface FormProps {
     text: string;
 }
 
-const model = Schema.Model<FormProps>({
+const formModel = Schema.Model<FormProps>({
     title: Schema.Types.StringType()
         .minLength(3, "title must be between 3 and 100 characters long.")
         .maxLength(100, "title must be between 3 and 100 characters long.")
@@ -29,7 +29,7 @@ const model = Schema.Model<FormProps>({
 });
 
 export const CreatePage: React.SFC = () => {
-    const formElement = useRef<null | any>(null);
+    const formElement = useRef<any>(null);
     const [formValue, setFormValue] = useState<FormProps>({
         title: "",
         label: 0,
@@ -81,7 +81,7 @@ export const CreatePage: React.SFC = () => {
                 <Form
                     ref={formElement}
                     formValue={formValue}
-                    model={model}
+                    model={formModel}
                     onChange={formValue => setFormValue({ ...formValue as any })}
                 >
                     <FormGroup>
@@ -100,13 +100,13 @@ export const CreatePage: React.SFC = () => {
                             inline
                         >
                             <Radio value={0}>
-                                <Tag color="green">Easy</Tag>
+                                <Tag color="green">easy</Tag>
                             </Radio>
                             <Radio value={1}>
-                                <Tag color="blue">Medium</Tag>
+                                <Tag color="blue">medium</Tag>
                             </Radio>
                             <Radio value={2}>
-                                <Tag color="red">Hard</Tag>
+                                <Tag color="red">hard</Tag>
                             </Radio>
                         </FormControl>
                     </FormGroup>

@@ -4,13 +4,16 @@ import { Progress } from "rsuite";
 
 import { AnimatedText } from "../components/AnimatedText";
 import { useInterval } from "../hooks/useInterval";
+import { useCountupTimer } from "../hooks/useCountupTimer";
 import { getRandomArbitrary } from "../utils";
 
-export const DashboardPage = () => {
+export const DashboardPage: React.SFC = () => {
     let [percentage, setPercentage] = useState(0);
-    let [time, setTime] = useState(0);
+    let [time, isTimerRunning, startTimer, stopTimer] = useCountupTimer();
 
     useInterval(() => {
+        !isTimerRunning && startTimer();
+
         const acc = getRandomArbitrary(0, 5);
 
         acc + percentage >= 100
@@ -18,9 +21,7 @@ export const DashboardPage = () => {
             : setPercentage(Math.floor(acc + percentage));
     }, percentage === 100 ? null : 100)
 
-    useInterval(() => {
-        setTime(time + 0.1);
-    }, percentage === 100 ? null : 100)
+    isTimerRunning && percentage === 100 && stopTimer();
 
     return (
         <>
@@ -39,17 +40,13 @@ export const DashboardPage = () => {
                 transition={{ delay: 0.8 }}
                 variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
             >
-                <h5>shows useful stats.</h5>
+                <h5>shows useful stats & average rankings.</h5>
                 <br />
 
                 <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                        <Progress.Circle
-                            strokeColor="#ffc107"
-                            percent={73}
-                            style={{ width: "100px" }}
-                        />
-                        <p style={{ marginTop: "10px" }}>Accuracy</p>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                        <h2 style={{ color: "#72b972" }}>193</h2>
+                        <p>Key hits</p>
                     </div>
 
                     <div style={{ display: "flex", flexDirection: "column", marginLeft: "20px" }}>
@@ -57,9 +54,13 @@ export const DashboardPage = () => {
                         <p>Key misses</p>
                     </div>
 
-                    <div style={{ display: "flex", flexDirection: "column", marginLeft: "20px" }}>
-                        <h2 style={{ color: "#72b972" }}>193</h2>
-                        <p>Key hits</p>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginLeft: "20px" }}>
+                        <Progress.Circle
+                            strokeColor="#ffc107"
+                            percent={73}
+                            style={{ width: "100px" }}
+                        />
+                        <p style={{ marginTop: "10px" }}>Accuracy</p>
                     </div>
 
                     <div style={{ display: "flex", flexDirection: "column", marginLeft: "20px" }}>

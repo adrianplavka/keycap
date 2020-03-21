@@ -9,8 +9,10 @@ import logo from "./assets/img/logo.png";
 
 import { DashboardPage } from "./pages/DashboardPage";
 import { CreatePage } from "./pages/CreatePage";
+import { PlayRandomPage } from "./pages/PlayRandomPage";
+import { PlayPage } from "./pages/PlayPage";
 
-const App = () => {
+export const App: React.SFC = () => {
     return (
         <BrowserRouter>
             <div id="main">
@@ -57,8 +59,11 @@ const App = () => {
                             <Route exact path="/">
                                 <DashboardPage />
                             </Route>
+                            <Route exact path="/play">
+                                <PlayRandomPage />
+                            </Route>
                             <Route path="/play">
-                                Play
+                                <PlayPage />
                             </Route>
                             <Route exact path="/create">
                                 <CreatePage />
@@ -73,5 +78,3 @@ const App = () => {
         </BrowserRouter>
   );
 }
-
-export default App;

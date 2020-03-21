@@ -26,7 +26,6 @@ namespace Keycap.Models
 
         [Required]
         [StringLength(500, MinimumLength = 10)]
-
         public string Text { get; set; }
 
         [Required]

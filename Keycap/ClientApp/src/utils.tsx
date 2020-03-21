@@ -6,3 +6,18 @@
 export const getRandomArbitrary = (min: number, max: number) => {
     return Math.random() * (max - min) + min;
 }
+
+export const equalCharactersLength = (original: string, copy: string) => {
+    let idx = 0;
+
+    for (let i = 0; i < copy.length; i++) {
+        if (original[i] === copy[i]) {
+            idx++;
+            continue;
+        } else {
+            break;
+        }
+    }
+
+    return idx;
+};

@@ -17,5 +17,21 @@ namespace Keycap.Models
 
         [Required]
         public DateTime CreatedAt { get; set; }
+
+        [Required]
+        public int KeyHits { get; set; }
+
+        [Required]
+        public int KeyMisses { get; set; }
+
+        [Required]
+        public double Accuracy { get; set; }
+
+        [Required]
+        public double WPM { get; set; }
+
+        [Required]
+        public double Time { get; set; }
+
     }
 }
