@@ -94,6 +94,6 @@ Besides the Entity Framework issues, the whole development was quite a breeze an
 
 The application is not by all means safe, as it doesn't leverage any security issues whatsoever. The first improvement would be to create some kind of throttling capabilities into the application, as the endpoints are easily visible. An experienced developer could overflow the database by creating many requests to create games or post fake statistics.
 
-The second issue is that there is no client validation & we trust the client with the statistics he made. Initially I was interested in WebSocket support, but I decided to not make the project any complex. I was more interested in how ASP.NET configures itself and how is the development experience.
+The second issue is that there is no client validation & we trust the client with the statistics he made. Initially I was interested in WebSocket support, but I decided to not make the project any complex. I was more interested in how ASP.NET configures itself and how the development experience is like.
 
 Overall, this project proved to me, that C# ecosystem is vast and by some degree, better than the ecosystems I have been using across my projects (for example, Node.js is quite behind in some things).
