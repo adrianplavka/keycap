@@ -26,13 +26,13 @@ When developing, I used Visual Studio 2019, with it's flawless debugging support
 
 Docker has been also used to package this application - Visual Studio helped me to generate a base image, which I then altered for my needs. This has yet proven to me as the best solution for spinning the application fast for others.
 
-## Application requirements
-
-- Visual Studio (preferable version 2019)
-- Docker (with `docker-compose` installed aswell)
-- .NET Framework
+## Building the application
 
 ### Building & running using Docker
+
+#### Requirements
+
+- Docker (with `docker-compose` installed aswell)
 
 After residing in a directory with the source code, you should see a `docker-compose.yml` file. This file was written so that it can spin up necessary external services for it to work. There is no need for any other configuration, except running these commands:
 
@@ -42,6 +42,12 @@ After residing in a directory with the source code, you should see a `docker-com
 After this, the application should be up & running at `http://localhost:5000`.
 
 ### Building & running using Visual Studio
+
+#### Requirements
+
+- Visual Studio (preferable version 2019)
+- .NET Framework
+- PostgreSQL database
 
 The application was being developed using Visual Studio and so it has configured running tasks. Although the application can be run through this, there are several things that have to be set-up first:
 
