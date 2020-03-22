@@ -51,7 +51,7 @@ After this, the application should be up & running at `http://localhost:5000`.
 
 The application was being developed using Visual Studio and so it has configured running tasks. Although the application can be run through this, there are several things that have to be set-up first:
 
-- You will have run a PostgreSQL database itself. For local development, you can use the `docker-compose.yml` file to spin up only the database, using command `docker-compose up db`
+- You will have to run a PostgreSQL database. For local development, you can use the `docker-compose.yml` file to spin up only the database, using command `docker-compose up db`
 - Using Visual Studio, you will have to specify a `DATABASE_URL` environment variable to the task you wish to run (for example, the `IIS Express` task) - this will have to point to a PostgreSQL database (example: `postgres://postgres@db:5432/keycap`)
 
 Now you can run the application using `IIS Express` run task. This will automatically open a browser with the client application.
